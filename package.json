@@ -1,22 +1,75 @@
 {
   "name": "koishi-plugin-openai-provenance",
-  "description": "openai-provenance",
-  "version": "0.0.1",
+  "description": "Koishi plugin to verify OpenAI-generated images and detect C2PA or SynthID provenance signals.",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
+    }
+  },
   "files": [
-    "lib",
-    "dist"
+    "CHANGELOG.md",
+    "lib"
   ],
+  "author": "KITA",
   "license": "MIT",
-  "scripts": {},
+  "homepage": "https://github.com/KITAI19019/koishi-plugin-openai-provenance#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KITAI19019/koishi-plugin-openai-provenance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KITAI19019/koishi-plugin-openai-provenance/issues"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.json && esbuild src/index.ts --bundle --platform=node --format=cjs --external:koishi --outfile=lib/index.js",
+    "test": "tsx --test tests/*.test.ts",
+    "prepublishOnly": "npm test && npm run build"
+  },
   "keywords": [
+    "ai-detector",
+    "c2pa",
     "chatbot",
+    "content-provenance",
+    "image",
     "koishi",
-    "plugin"
+    "openai",
+    "openai-image",
+    "plugin",
+    "synthid",
+    "watermark"
   ],
-  "devDependencies": {},
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "esbuild": "^0.23.1",
+    "koishi": "^4.18.7",
+    "tsx": "^4.16.2",
+    "typescript": "^5.6.2"
+  },
   "peerDependencies": {
     "koishi": "^4.18.7"
+  },
+  "koishi": {
+    "description": {
+      "zh": "验证 OpenAI 工具生成图像，检测引用图片中的 C2PA 或 SynthID 溯源信号",
+      "en": "Verify OpenAI-generated images and detect C2PA or SynthID provenance signals"
+    },
+    "service": {
+      "required": [
+        "http"
+      ]
+    }
   }
 }

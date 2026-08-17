@@ -3,6 +3,7 @@
 ## 1.0.1 - 2026-08-17
 
 - Export `./package.json` so Koishi's package scanner can discover and configure the installed plugin.
+- Remove an unused workspace-only TypeScript type dependency so standalone CI builds succeed.
 
 ## 1.0.0 - 2026-08-17
 

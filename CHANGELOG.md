@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 - 2026-08-17
+
+- Export `./package.json` so Koishi's package scanner can discover and configure the installed plugin.
+
 ## 1.0.0 - 2026-08-17
 
 - 支持检测被引用 PNG、JPEG 和 WebP 图片中的 OpenAI C2PA 与 SynthID 信号。
